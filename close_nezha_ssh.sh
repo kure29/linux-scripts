@@ -29,10 +29,6 @@ echo "已重启 nezha-agent 服务"
 # 检查服务状态
 systemctl status nezha-agent
 
-# 添加执行权限并运行 close_nezha_ssh.sh 脚本
-chmod +x close_nezha_ssh.sh && ./close_nezha_ssh.sh
-echo "已赋予 close_nezha_ssh.sh 可执行权限并运行脚本"
-
 # 添加执行权限并运行 nezha_v0.sh 脚本，选择选项 12
 chmod +x nezha_v0.sh
 echo "正在运行 nezha_v0.sh 并选择选项 12..."
