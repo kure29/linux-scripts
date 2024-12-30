@@ -29,8 +29,16 @@ echo "已重启 nezha-agent 服务"
 # 检查服务状态
 systemctl status nezha-agent
 
-# 添加执行权限并运行 nezha_v0.sh 脚本，选择选项 12
+# 添加执行权限并运行 nezha_v0.sh 脚本，自动选择选项 1 和 12
 chmod +x nezha_v0.sh
-echo "正在运行 nezha_v0.sh 并选择选项 12..."
-echo "12" | ./nezha_v0.sh
+echo "正在运行 nezha_v0.sh 并自动选择选项 1 和 12..."
+
+# 使用 expect 自动选择选项 1 和 12
+expect << EOF
+spawn ./nezha_v0.sh
+expect "请输入选择 [1-2]：" { send "1\r" }
+expect "请输入选择 [0-13]:" { send "12\r" }
+expect eof
+EOF
+
 echo "nezha_v0.sh 脚本执行完毕"
